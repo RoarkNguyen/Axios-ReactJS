@@ -1,7 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect } from "react";
+import productsApi from "./Api/productApi";
 
 function App() {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const params = {
+        _limit: 10,
+      };
+      const productList = await productsApi.getAll(params);
+      console.log(productList);
+    };
+    fetchProducts();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
